@@ -1,0 +1,89 @@
+body {
+	overflow: hidden;
+}
+
+/** Leaflet UI **/
+#map {
+	height: 100%;
+	z-index: 0;
+}
+
+.info {
+    padding: 6px 8px;
+    font: 14px/16px Arial, Helvetica, sans-serif;
+    background: white;
+    background: rgba(255,255,255,0.8);
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    border-radius: 5px;
+}
+.info h4 {
+    margin: 0 0 5px;
+    color: #777;
+}
+
+/** Configuring Angular UI **/
+/* Speed Dial */
+.lock-size .md-fab-top-right {
+  top: 16px; 
+}
+
+@media (max-device-width: 600px) {
+  .lock-size .md-fab-top-right {
+    top: 15px;
+    right: 15px; 
+  } 
+}
+
+.lock-size .md-fab.demo-fab.trigger-fab:hover, .lock-size .md-fab.demo-fab.trigger-fab.md-focused, .lock-size .md-fab.demo-fab.action-fab:hover, .lock-size .md-fab.demo-fab.action-fab.md-focused {
+  background-color: #333; 
+}
+
+.lock-size .md-fab.demo-fab.action-fab {
+  background-color: #aaa; 
+}
+
+.lock-size md-fab-speed-dial md-fab-trigger {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1); 
+}
+
+.lock-size md-fab-speed-dial.md-scale.ng-hide-add.ng-hide-add-active, .lock-size md-fab-speed-dial.md-fling.ng-hide-add.ng-hide-add-active {
+    display: flex !important; 
+}
+.lock-size md-fab-speed-dial.md-scale.ng-hide md-fab-trigger, .lock-size md-fab-speed-dial.md-fling.ng-hide md-fab-trigger {
+    transform: scale(0); 
+}
+
+/* State Selector */
+.stateSelect {
+	max-width: 24%;
+	width: 24%;
+	max-height: 44px;
+	padding: 10px;
+	position: absolute;
+	bottom: 20px;
+	right: 10px;
+	z-index: 1;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
+}
+
+.stateSelect > * {
+	max-height: 30px;
+}
+
+.stateSelect md-button {
+	background: rgba(255,255,255,0.8);
+	min-width: 1%;
+	min-height: 1%;
+}
+/*
+.stateSelect md-button[aria-label="Previous State"] {
+	border-top-left-radius: 5px; 
+	border-bottom-left-radius: 5px; 
+}
+.stateSelect md-button[aria-label="Next State"] {
+	border-top-right-radius: 5px; 
+	border-bottom-right-radius: 5px; 
+}*/
