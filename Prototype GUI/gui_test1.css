@@ -78,12 +78,31 @@ body {
 	min-width: 1%;
 	min-height: 1%;
 }
-/*
-.stateSelect md-button[aria-label="Previous State"] {
-	border-top-left-radius: 5px; 
-	border-bottom-left-radius: 5px; 
+
+/* Algorithm Controls */
+.algCtrl {
+	width: 24%;
+	position: absolute;
+	bottom: 10%;
+	right: 10px;
+	z-index: 1;
+	background: rgba(255,255,255,0.8);
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-radius: 5px;
 }
-.stateSelect md-button[aria-label="Next State"] {
-	border-top-right-radius: 5px; 
-	border-bottom-right-radius: 5px; 
-}*/
+
+#accordContainer {
+	box-shadow: 0 0 15px rgba(0,0,0,0.2);
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 0;
+}
+
+.accordTab[flex-order="1"] {
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+.accordTab {
+	border-bottom: 1px solid lightgrey;
+}

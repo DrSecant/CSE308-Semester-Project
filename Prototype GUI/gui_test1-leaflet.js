@@ -95,8 +95,11 @@ function Map() {
 		    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
 		});
 
+		// Ensures that tiles load
 		tileLayer.on("load",function() { 
-			maplet.map.invalidateSize();
+			setTimeout(() => {
+     			maplet.map.invalidateSize();
+   			}, 0);
 		});
 
 		tileLayer.addTo(maplet.map);

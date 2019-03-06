@@ -44,7 +44,7 @@
 			</div>
 
 			<!-- State Selection -->
-			<div class="stateSelect md-raised" layout="row" layout-align="center center">
+			<div class="stateSelect md-raised" layout="row" layout-align="center center" layout-padding>
 				<md-button class="md-raised" flex="5">
 					<md-icon md-svg-src="{{demo.buttonIcons.prev.icon}}" aria-label="{{demo.buttonIcons.prev.name}}"></md-icon>
 				</md-button>
@@ -57,7 +57,29 @@
 			</div>
 
 			<!-- Application Menu -->
-			<div></div>
+			<div class="algCtrl md-raised" layout="column" layout-align="center start" layout-padding>
+				<div layout="row" layout-align="center start" layout-padding>
+					<md-input-container class="md-block" flex="75">
+	        			<label>Number of Districts</label>
+	        			<input required type="number" step="any" name="numDistricts" ng-model="algData.numDistricts" min="2" max="70" />
+	        		</md-input-container>
+	        		<md-button class="md-raised" flex="25">
+	        			<label>GENERATE</label>
+	        		</md-button>
+        		</div>
+
+        		<md-content id="accordContainer">
+        			<div layout="column">
+	        			<md-toolbar class="md-accent accordTab" ng-repeat="(tabKey,tab) in accordionTabs" flex-order="{{tab.order}}" layout="row" layout-align="start stretch" layout-padding>
+	        				<span>{{tab.title}}</span>
+	        				<md-button class="md-icon-button" aria-label="Tab Action" ng-click="changeTabState(tabKey);">
+	          					<md-icon md-svg-icon="{{demo.actions[tab.action].icon}}"></md-icon>
+	        				</md-button>
+	        				</div>
+	        			</md-toolbar>
+        			</div>
+        		</md-content>
+			</div>
 		</div>
 
 		<!-- JQuery -->
