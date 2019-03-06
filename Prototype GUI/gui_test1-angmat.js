@@ -30,5 +30,5 @@
       app.states=usMap.leaf_states;
 
       $scope.menuToggle = {};
-    });
+    }); 
 })();

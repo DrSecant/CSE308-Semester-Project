@@ -18,7 +18,7 @@
 	<body class="mapTest" ng-app="MapApp" ng-cloak>
 		<div ng-controller="AppCtrl as demo" ng-cloak>
 		    <!-- US Map -->
-		    <div layout="column" flex="100%" id="map"></div>
+		    <div leaflet (leafletMapReady)="onMapReady($event)" layout="column" flex="100%" id="map"></div>
 
 		    <!-- FAB Menu -->
 		    <div class="lock-size">

@@ -90,10 +90,16 @@ function Map() {
 		var mapboxAccessToken = "sk.eyJ1IjoiZHJzZWNhbnQiLCJhIjoiY2pzOW4yZm8zMGVhNTRhcno5OGUzOHZpeiJ9.q5a-WOex7gnG3-BhKbs5XQ";
 		maplet.map = L.map('map').setView([37.8, -96], 4);
 
-		L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
+		var tileLayer = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=' + mapboxAccessToken, {
 		    id: 'mapbox.light',
 		    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>'
-		}).addTo(maplet.map);
+		});
+
+		tileLayer.on("load",function() { 
+			maplet.map.invalidateSize();
+		});
+
+		tileLayer.addTo(maplet.map);
 
 		maplet.geojsonLayer.addTo(maplet.map);
 	}
