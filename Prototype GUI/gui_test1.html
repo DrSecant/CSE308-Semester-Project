@@ -57,8 +57,8 @@
 			</div>
 
 			<!-- Application Menu -->
-			<div class="algCtrl md-raised" layout="column" layout-align="center start" layout-padding>
-				<div layout="row" layout-align="center start" layout-padding>
+			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding>
+				<div layout="row" layout-align="center start" layout-padding flex="25">
 					<md-input-container class="md-block" flex="75">
 	        			<label>Number of Districts</label>
 	        			<input required type="number" step="any" name="numDistricts" ng-model="algData.numDistricts" min="2" max="70" />
@@ -68,15 +68,30 @@
 	        		</md-button>
         		</div>
 
-        		<md-content id="accordContainer">
-        			<div layout="column">
-	        			<md-toolbar class="md-accent accordTab" ng-repeat="(tabKey,tab) in accordionTabs" flex-order="{{tab.order}}" layout="row" layout-align="start stretch" layout-padding>
-	        				<span>{{tab.title}}</span>
-	        				<md-button class="md-icon-button" aria-label="Tab Action" ng-click="changeTabState(tabKey);">
-	          					<md-icon md-svg-icon="{{demo.actions[tab.action].icon}}"></md-icon>
-	        				</md-button>
+        		<!-- Accordion Tabs -->
+        		<md-content id="accordContainer" flex>
+        			<div layout="column" layout-align="center stretch">
+        				<!-- Toolbar Generation -->
+	        			<md-toolbar class="md-accent accordTab" ng-repeat="(tabKey,tab) in accordionTabs" flex-order="{{tab.order}}">
+	        				<div class="md-toolbar-tools">
+		        				<h7 flex>{{tab.title}}</h7>
+		        				<md-button class="md-icon-button" aria-label="Tab Action" ng-click="changeTabState(tabKey);">
+		          					<md-icon md-svg-icon="{{demo.actions[tab.action].icon}}"></md-icon>
+		        				</md-button>
 	        				</div>
 	        			</md-toolbar>
+	        			<!-- Accordion Content -->
+	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.compact.open" flex-order="{{accordionTabs.compact.order + 1}}" layout-padding layout-wrap>
+	        				<md-slider-container layout="row" layout-align="center center">
+		        				<div layout layout-align="center center" flex="noshrink">
+							        <span class="md-body-1">Weight</span>
+							    </div>
+							    <md-slider flex="noshrink" ng-model="algData.compactWeight" step="0.01" min="0.00" max="1.00" aria-label="compactness weight" id="compweight-slider"></md-slider>
+							    <md-input-container flex="90">
+								    <input type="number" ng-model="algData.compactWeight" aria-label="Compactness Weight" aria-controls="compweight-slider">
+								</md-input-container>
+							</md-slider-container>
+	        			</div>
         			</div>
         		</md-content>
 			</div>

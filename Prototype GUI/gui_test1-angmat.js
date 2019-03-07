@@ -1,7 +1,7 @@
 (function() {
   'use strict';
 
-  angular.module('MapApp', ['ngMaterial'])
+  angular.module('MapApp', ['ngMaterial', 'ngAnimate'])
     .controller('AppCtrl', function($scope) {
       var app = this;
 
@@ -33,7 +33,8 @@
       app.states=usMap.leaf_states;
       /* Algorithm Control Menu */
       $scope.algData = {
-        numDistricts:null
+        numDistricts:null,
+        compactWeight:0
       };
 
       // Creating the Accordion tabs
@@ -42,16 +43,24 @@
         min: { name: "Minimize", icon: "img/icons/baseline-remove-24px.svg"}
       };
       $scope.accordionTabs = {
-        compact: {title: "Compactness", action: "min", open:"true", order:1},
-        contig: {title: "Contiguity", action: "max", open:"false", order:3},
-        popEq: {title: "Population Equality", action: "max", open:"false", order:5},
-        parFai: {title: "Partisan Fairness", action: "max", open:"false", order:7},
-        majMinDis: {title: "Majority-Minority Districts", action: "max", open:"false", order:9},
+        compact: {title: "Compactness", action: "min", open:true, order:1},
+        contig: {title: "Contiguity", action: "max", open:false, order:3},
+        popEq: {title: "Population Equality", action: "max", open:false, order:5},
+        parFai: {title: "Partisan Fairness", action: "max", open:false, order:7},
+        majMinDis: {title: "Majority-Minority Districts", action: "max", open:false, order:9},
       };
       $scope.changeTabState = function(tabId) {
         var act = $scope.accordionTabs[tabId].action;
         $scope.accordionTabs[tabId].action = (act === "max") ? "min" : "max";
-        $scope.accordionTabs[tabId].open = (act === "max") ? "true" : "false";
+        $scope.accordionTabs[tabId].open = (act === "max") ? true : false;
+      };
+      $scope.getOpenTab = function() {
+        for(var key in $scope.accordionTabs) {
+          if ($scope.accordionTabs[key].open) {
+            return key;
+          }
+        }
+        return null;
       };
 
       $scope.menuToggle = {};
