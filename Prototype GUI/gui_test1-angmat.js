@@ -1,3 +1,15 @@
+function MeasureSlider(value, id, min, max, step, tooltip) {
+  this.value = value;
+  this.id = id;
+  this.min = min;
+  this.max = max;
+  this.step = step;
+  this.tooltip = tooltip;
+  this.category = "slider";
+}
+
+function MeasureNumInput() {}
+
 (function() {
   'use strict';
 
@@ -33,8 +45,28 @@
       app.states=usMap.leaf_states;
       /* Algorithm Control Menu */
       $scope.algData = {
-        numDistricts:null,
-        compactWeight:0
+        general: {
+          numDistricts:null
+        },
+        compact: {
+          "Polsby-popper": new MeasureSlider(1, "polpop-slider", 0, 1, 0.01, "tooltip"),
+          "Schwartzberg": new MeasureSlider(1, "schwartz-slider", 0, 1, 0.01, "tooltip"),
+          "Convex Hull": new MeasureSlider(1, "convhull-slider", 0, 1, 0.01, "tooltip"),
+          "Reock": new MeasureSlider(1, "reock-slider", 0, 1, 0.01, "tooltip")
+        },
+        contig: {
+          "Weight": new MeasureSlider(1, "contig-slider", 0, 1, 0.01, "tooltip")
+        },
+        popEq: {
+          "Deviation Threshold": new MeasureSlider(1, "devThresh-slider", 0, 1, 0.01, "tooltip")
+        },
+        parFai: {
+          "Weight": new MeasureSlider(1, "parFai-slider", 0, 1, 0.01, "tooltip")
+        },
+        majMinDis: {
+          "Minimum %": new MeasureSlider(0, "parFai-slider", 0, 100, 1, "tooltip"),
+          "Maximum %": new MeasureSlider(100, "parFai-slider", 0, 100, 1, "tooltip")
+        }
       };
 
       // Creating the Accordion tabs
@@ -53,14 +85,15 @@
         var act = $scope.accordionTabs[tabId].action;
         $scope.accordionTabs[tabId].action = (act === "max") ? "min" : "max";
         $scope.accordionTabs[tabId].open = (act === "max") ? true : false;
-      };
-      $scope.getOpenTab = function() {
-        for(var key in $scope.accordionTabs) {
-          if ($scope.accordionTabs[key].open) {
-            return key;
+        if ($scope.accordionTabs[tabId].open) {
+          for(var key in $scope.accordionTabs) {
+            var currTab = $scope.accordionTabs[key];
+            if (key != tabId && currTab.open) {
+              $scope.accordionTabs[key].action = "max";
+              $scope.accordionTabs[key].open = false;
+            }
           }
         }
-        return null;
       };
 
       $scope.menuToggle = {};

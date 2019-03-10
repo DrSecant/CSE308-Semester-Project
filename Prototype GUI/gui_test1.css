@@ -1,3 +1,5 @@
+html, body { height: 100%; }
+
 body {
 	overflow: hidden;
 }
@@ -79,18 +81,19 @@ body {
 	min-height: 1%;
 }
 
-/* Algorithm Controls */
+/** Algorithm Controls **/
 .algCtrl {
 	width: 24%;
 	position: absolute;
-	bottom: 10%;
+	top: 12%;
+	bottom: 12%;
 	right: 10px;
 	z-index: 1;
 	background: rgba(255,255,255,0.8);
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
 	border-radius: 5px;
 }
-
+/* Accordion Tabs */
 #accordContainer {
 	box-shadow: 0 0 15px rgba(0,0,0,0.2);
 	border-top-left-radius: 5px;
@@ -110,18 +113,36 @@ body {
 .accordContent {
 	border-right: 1px solid lightgrey;
 	border-left: 1px solid lightgrey;
+	max-height: 22.6vh;
+	overflow-y: scroll;
+	padding-right: 1%;
+}
+.accordContent input[type="number"] {
+	min-width: 110%;
 }
 
 .animate-if.ng-enter, .animate-if.ng-leave {
-  transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+	transition:max-height ease-in-out 0.2s;
 }
 
 .animate-if.ng-enter,
 .animate-if.ng-leave.ng-leave-active {
-  opacity:0;
+ 	transform-origin: bottom center;
+    max-height: 0;
+    overflow: hidden;
 }
 
 .animate-if.ng-leave,
 .animate-if.ng-enter.ng-enter-active {
-  opacity:1;
+	transform-origin: bottom center;
+  	max-height: 22.6vh;
+}
+
+::-webkit-scrollbar {
+	/*width: 5%;*/
+	background: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: pink;
+	border-radius: 5px;
 }

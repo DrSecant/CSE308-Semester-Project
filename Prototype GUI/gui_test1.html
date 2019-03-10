@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -58,7 +59,7 @@
 
 			<!-- Application Menu -->
 			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding>
-				<div layout="row" layout-align="center start" layout-padding flex="25">
+				<div layout="row" layout-align="center start" layout-padding flex="15">
 					<md-input-container class="md-block" flex="75">
 	        			<label>Number of Districts</label>
 	        			<input required type="number" step="any" name="numDistricts" ng-model="algData.numDistricts" min="2" max="70" />
@@ -80,15 +81,94 @@
 		        				</md-button>
 	        				</div>
 	        			</md-toolbar>
+
 	        			<!-- Accordion Content -->
+	        			<!-- Compactness tab -->
 	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.compact.open" flex-order="{{accordionTabs.compact.order + 1}}" layout-padding layout-wrap>
-	        				<md-slider-container layout="row" layout-align="center center">
-		        				<div layout layout-align="center center" flex="noshrink">
-							        <span class="md-body-1">Weight</span>
+	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.compact">
+		        				<div layout layout-align="start center" flex="100">
+							        <span class="md-body-1">
+							        	{{label}}
+							        	<md-tooltip md-direction="up"  md-autohide="false">
+              								{{content.tooltip}}
+            							</md-tooltip>
+							        </span>
 							    </div>
-							    <md-slider flex="noshrink" ng-model="algData.compactWeight" step="0.01" min="0.00" max="1.00" aria-label="compactness weight" id="compweight-slider"></md-slider>
-							    <md-input-container flex="90">
-								    <input type="number" ng-model="algData.compactWeight" aria-label="Compactness Weight" aria-controls="compweight-slider">
+							    <md-slider flex="60" ng-model="content.value" step="{{content.step}}" min="{{content.min}}" max="{{content.max}}" aria-label="{{label}}" id="{{content.id}}"></md-slider>
+							    <md-input-container flex="nogrow">
+								    <input type="number" ng-model="content.value" min="{{content.min}}" max="{{content.max}}" step="{{content.step}}" aria-label="{{label}}" aria-controls="{{content.id}}">
+								</md-input-container>
+							</md-slider-container>
+	        			</div>
+	        			
+	        			<!-- Contiguity tab -->
+	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.contig.open" flex-order="{{accordionTabs.contig.order + 1}}" layout-padding layout-wrap>
+	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.contig">
+		        				<div layout layout-align="start center" flex="100">
+							        <span class="md-body-1">
+							        	{{label}}
+							        	<md-tooltip md-direction="up"  md-autohide="false">
+              								{{content.tooltip}}
+            							</md-tooltip>
+							        </span>
+							    </div>
+							    <md-slider flex="60" ng-model="content.value" step="{{content.step}}" min="{{content.min}}" max="{{content.max}}" aria-label="{{label}}" id="{{content.id}}"></md-slider>
+							    <md-input-container flex="nogrow">
+								    <input type="number" ng-model="content.value" min="{{content.min}}" max="{{content.max}}" step="{{content.step}}" aria-label="{{label}}" aria-controls="{{content.id}}">
+								</md-input-container>
+							</md-slider-container>
+	        			</div> 
+
+	        			<!-- Population Equality tab -->
+	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.popEq.open" flex-order="{{accordionTabs.popEq.order + 1}}" layout-padding layout-wrap>
+	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.popEq">
+		        				<div layout layout-align="start center" flex="100">
+							        <span class="md-body-1">
+							        	{{label}}
+							        	<md-tooltip md-direction="up"  md-autohide="false">
+              								{{content.tooltip}}
+            							</md-tooltip>
+							        </span>
+							    </div>
+							    <md-slider flex="60" ng-model="content.value" step="{{content.step}}" min="{{content.min}}" max="{{content.max}}" aria-label="{{label}}" id="{{content.id}}"></md-slider>
+							    <md-input-container flex="nogrow">
+								    <input type="number" ng-model="content.value" min="{{content.min}}" max="{{content.max}}" step="{{content.step}}" aria-label="{{label}}" aria-controls="{{content.id}}">
+								</md-input-container>
+							</md-slider-container>
+	        			</div>
+
+	        			<!-- Partisan Fairness tab -->
+	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.parFai.open" flex-order="{{accordionTabs.parFai.order + 1}}" layout-padding layout-wrap>
+	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.parFai">
+		        				<div layout layout-align="start center" flex="100">
+							        <span class="md-body-1">
+							        	{{label}}
+							        	<md-tooltip md-direction="up"  md-autohide="false">
+              								{{content.tooltip}}
+            							</md-tooltip>
+							        </span>
+							    </div>
+							    <md-slider flex="60" ng-model="content.value" step="{{content.step}}" min="{{content.min}}" max="{{content.max}}" aria-label="{{label}}" id="{{content.id}}"></md-slider>
+							    <md-input-container flex="nogrow">
+								    <input type="number" ng-model="content.value" min="{{content.min}}" max="{{content.max}}" step="{{content.step}}" aria-label="{{label}}" aria-controls="{{content.id}}">
+								</md-input-container>
+							</md-slider-container>
+	        			</div>
+
+	        			<!-- Minority Majority Districts tab -->
+	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.majMinDis.open" flex-order="{{accordionTabs.majMinDis.order + 1}}" layout-padding layout-wrap>
+	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.majMinDis">
+		        				<div layout layout-align="start center" flex="100">
+							        <span class="md-body-1">
+							        	{{label}}
+							        	<md-tooltip md-direction="up"  md-autohide="false">
+              								{{content.tooltip}}
+            							</md-tooltip>
+							        </span>
+							    </div>
+							    <md-slider flex="60" ng-model="content.value" step="{{content.step}}" min="{{content.min}}" max="{{content.max}}" aria-label="{{label}}" id="{{content.id}}"></md-slider>
+							    <md-input-container flex="nogrow">
+								    <input type="number" ng-model="content.value" min="{{content.min}}" max="{{content.max}}" step="{{content.step}}" aria-label="{{label}}" aria-controls="{{content.id}}">
 								</md-input-container>
 							</md-slider-container>
 	        			</div>
