@@ -32,7 +32,7 @@
 
 			    	<md-fab-actions>
 				      	<div ng-repeat="item in demo.items">
-          					<md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-click="clickEvent($event, item);" ng-if="item.show">
+          					<md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini{{item.class}}" ng-click="clickEvent($event, item);" ng-if="item.show">
             					<md-tooltip md-direction="{{item.direction}}"  md-autohide="false">
               						{{item.name}}
             					</md-tooltip>
@@ -58,7 +58,7 @@
 			</div>
 
 			<!-- Application Menu -->
-			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding>
+			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding ng-if="(demo.usMap.selectedState != '') && (demo.mode == 'single')">
 				<div layout="row" layout-align="center start" layout-padding flex="15">
 					<md-input-container class="md-block" flex="75">
 	        			<label>Number of Districts</label>

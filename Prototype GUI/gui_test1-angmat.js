@@ -19,10 +19,12 @@ function MeasureNumInput() {}
 
       /* Login Info */
       app.username = "";
+      app.modes = ["single", "batch"];
+      app.mode = "single";
 
       /* Call leaflet function (potentially create a Map obj instead) */
-      var usMap = new Map();
-      usMap.mapSetup();
+      app.usMap = new Map();
+      app.usMap.mapSetup();
 
       app.isOpen = false;
       app.hover = false;
@@ -65,10 +67,10 @@ function MeasureNumInput() {}
 
       /* Defining menu item info */
       app.items = [
-        { name: "Login", icon: "img/icons/baseline-person_outline-24px.svg", direction: "bottom", show: true, click: $scope.showLoginDialog },
-        { name: "Log out", icon: "img/icons/baseline-exit_to_app-24px.svg", direction: "bottom", show: false, click: "" },
-        { name: "Batch Run", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: true, click: "" },
-        { name: "Single Run", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: true, click: "" }
+        { name: "Login", class:"", icon: "img/icons/baseline-person_outline-24px.svg", direction: "bottom", show: true, click: $scope.showLoginDialog },
+        { name: "Log out", class:"", icon: "img/icons/baseline-exit_to_app-24px.svg", direction: "bottom", show: false, click: "" },
+        { name: "Batch Run", class:"", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: true, click: "" },
+        { name: "Single Run", class:" currMode", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: true, click: "" }
       ];
       $scope.clickEvent = function($event, item) {
         if (item.name == "Login") {
@@ -81,6 +83,16 @@ function MeasureNumInput() {}
           app.items[0].show = !item.show;
           app.username = "";
         }
+        else if (item.name == "Single Run") {
+          app.mode = "single";
+          app.items[2].class = "";
+          app.items[3].class = " currMode";
+        }
+        else if (item.name == "Batch Run") {
+          app.mode = "batch";
+          app.items[2].class = " currMode";
+          app.items[3].class = "";
+        }
       };
 
       /* Handling application menu */
@@ -88,7 +100,7 @@ function MeasureNumInput() {}
       	prev: { name: "Previous State", icon: "img/icons/baseline-navigate_before-24px.svg"},
       	next: { name: "Next State", icon: "img/icons/baseline-navigate_next-24px.svg"}
       };
-      app.states=usMap.leaf_states;
+      app.states=app.usMap.leaf_states;
       /* Algorithm Control Menu */
       $scope.algData = {
         general: {

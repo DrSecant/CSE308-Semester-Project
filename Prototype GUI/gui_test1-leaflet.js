@@ -5,6 +5,7 @@ function Map() {
 	this.infoCtrl;
 	var maplet = this;
 	this.leaf_states = [];
+	this.selectedState = "";
 
 	this.mapSetup = function() {
 		geoSetup();
@@ -62,6 +63,8 @@ function Map() {
 		}
 		bounds = [[bounds[1],bounds[0]+SHIFT],[bounds[3],bounds[2]+SHIFT]];
 	    maplet.map.fitBounds(bounds);
+	    var layer = e.target;
+	    maplet.selectedState = layer.feature.properties.NAME;
 	}
 
 	// Maps listener functions to state layer
