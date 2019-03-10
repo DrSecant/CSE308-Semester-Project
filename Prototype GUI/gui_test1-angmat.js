@@ -14,7 +14,7 @@ function MeasureNumInput() {}
   'use strict';
 
   angular.module('MapApp', ['ngMaterial', 'ngAnimate'])
-    .controller('AppCtrl', function($scope) {
+    .controller('AppCtrl', function($scope, $mdDialog) {
       var app = this;
 
       /* Login Info */
@@ -31,11 +31,57 @@ function MeasureNumInput() {}
 
       app.selectedDirection = 'left';
 
+      
+      // Dialog
+      $scope.showLoginDialog = function(ev) {
+        $mdDialog.show({
+          locals: {
+            user: app.username,
+            pass: "",
+            act: "login"
+          },
+          controller: LoginController,
+          templateUrl: 'login.tmpl.html',
+          parent: angular.element(document.body),
+          targetEvent: ev,
+          clickOutsideToClose:false
+        })
+        .then(function(answer) {
+          if (answer.action == "login") {
+            app.username = answer.username;
+            console.log(answer.username + " has logged in.");
+          }
+          else if (answer.action == "signup") {
+            app.username = answer.username;
+            console.log(answer.username + " is now registered.");
+          }
+          else {
+            console.log("There is a disturbance in the login mechanism...");
+          }
+        }, function() {
+          console.log('You decided to continue as a guest.');
+        });
+      };
+
       /* Defining menu item info */
       app.items = [
-        { name: "Batch Run", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom" },
-        { name: "Single Run", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom" }
+        { name: "Login", icon: "img/icons/baseline-person_outline-24px.svg", direction: "bottom", show: true, click: $scope.showLoginDialog },
+        { name: "Log out", icon: "img/icons/baseline-exit_to_app-24px.svg", direction: "bottom", show: false, click: "" },
+        { name: "Batch Run", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: true, click: "" },
+        { name: "Single Run", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: true, click: "" }
       ];
+      $scope.clickEvent = function($event, item) {
+        if (item.name == "Login") {
+          item.click($event);
+          item.show = !item.show;
+          app.items[1].show = !item.show;
+        }
+        else if (item.name == "Log out") {
+          item.show = !item.show;
+          app.items[0].show = !item.show;
+          app.username = "";
+        }
+      };
 
       /* Handling application menu */
       app.buttonIcons = {
@@ -96,6 +142,29 @@ function MeasureNumInput() {}
         }
       };
 
+
       $scope.menuToggle = {};
+
+      function LoginController($scope, $mdDialog, user, pass, act) {
+        $scope.username = user;
+        $scope.password = pass;
+        $scope.act = act;
+        $scope.hide = function() {
+          $mdDialog.hide();
+        };
+
+        $scope.cancel = function() {
+          $mdDialog.cancel();
+        };
+
+        $scope.answer = function(answer) {
+          var response = {
+            username: $scope.username,
+            password: $scope.password,
+            action: $scope.act
+          }
+          $mdDialog.hide(response);
+        };
+      }
     }); 
 })();

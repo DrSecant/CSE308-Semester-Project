@@ -32,7 +32,7 @@
 
 			    	<md-fab-actions>
 				      	<div ng-repeat="item in demo.items">
-          					<md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-click="">
+          					<md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini" ng-click="clickEvent($event, item);" ng-if="item.show">
             					<md-tooltip md-direction="{{item.direction}}"  md-autohide="false">
               						{{item.name}}
             					</md-tooltip>
@@ -100,7 +100,7 @@
 								</md-input-container>
 							</md-slider-container>
 	        			</div>
-	        			
+
 	        			<!-- Contiguity tab -->
 	        			<div class="accordContent animate-if" layout="row" ng-if="accordionTabs.contig.open" flex-order="{{accordionTabs.contig.order + 1}}" layout-padding layout-wrap>
 	        				<md-slider-container layout="row" layout-align="center center" layout-wrap ng-repeat="(label,content) in algData.contig">
