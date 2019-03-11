@@ -1,70 +1,15 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>Map Test</title>
-  		<!-- Angular Material style sheet -->
-  		<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.css">
-  		<!-- Leaflet Dependancies -->
-  		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-   		integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
-   		crossorigin=""/>
-   		<!-- Leaflet's CSS -->
- 		<script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
-   		integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
-   		crossorigin=""></script>
-
-   		<link rel="stylesheet" href="gui_test1.css">
-	</head>
-	<body class="mapTest" ng-app="MapApp" ng-cloak>
-		<div ng-controller="AppCtrl as demo" ng-cloak>
-		    <!-- US Map -->
-		    <div leaflet (leafletMapReady)="onMapReady($event)" layout="column" flex="100%" id="map"></div>
-
-		    <!-- FAB Menu -->
-		    <div class="lock-size">
-			    <md-fab-speed-dial md-direction="left" md-open="demo.isOpen" ng-class="demo.selectedMode" class="md-fab-top-right" ng-mouseenter="demo.isOpen=true" ng-mouseleave="demo.isOpen=false">
-			    	<md-fab-trigger>
-	          			<md-button aria-label="menu" class="md-fab">
-	            			<md-icon md-svg-src="img/icons/baseline-menu-24px.svg"></md-icon>
-	          			</md-button>
-	        		</md-fab-trigger>
-
-			    	<md-fab-actions>
-				      	<div ng-repeat="item in demo.items">
-          					<md-button aria-label="{{item.name}}" class="md-fab md-raised md-mini{{item.class}}" ng-click="clickEvent($event, item);" ng-if="item.show">
-            					<md-tooltip md-direction="{{item.direction}}"  md-autohide="false">
-              						{{item.name}}
-            					</md-tooltip>
-
-            					<md-icon md-svg-src="{{item.icon}}" aria-label="{{item.name}}"></md-icon>
-          					</md-button>
-        				</div>
-			    	</md-fab-actions>
-			    </md-fab-speed-dial>
-			</div>
-
-			<!-- State Selection -->
-			<div class="stateSelect md-raised" layout="row" layout-align="center center" layout-padding>
-				<md-button class="md-raised md-fab md-mini">
-					<md-icon md-svg-src="{{demo.buttonIcons.prev.icon}}" aria-label="{{demo.buttonIcons.prev.name}}"></md-icon>
-				</md-button>
-				<md-select placeholder="Select state" ng-model="uiInfo.selectedState" ng-change="" flex="60">
-      				<md-option ng-value="state" ng-repeat="state in demo.states | orderBy">{{state}}</md-option>
-    			</md-select>
-    			<md-button class="md-raised md-fab md-mini">
-					<md-icon md-svg-src="{{demo.buttonIcons.next.icon}}" aria-label="{{demo.buttonIcons.next.name}}"></md-icon>
-				</md-button>
-			</div>
-
-			<!-- Application Menu -->
-			<!-- Single Run Menu -->
-			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding ng-if="(demo.username != '') && (uiInfo.selectedState != '') && (demo.mode == 'single')">
 				<div layout="row" layout-align="center start" layout-padding flex="15">
-					<md-input-container class="md-block" flex="75">
-	        			<label>Number of Districts</label>
-	        			<input required type="number" step="any" name="numDistricts" ng-model="algData.numDistricts" min="2" max="70" />
-	        		</md-input-container>
+					<div layout="row" flex="75" layout-wrap>
+						<!--<h2 class="md-subhead" flex="100">District Number Range</h2>-->
+						<md-input-container class="md-block" flex="50">
+		        			<label>Start</label>
+		        			<input required type="number" step="1" name="numLow" ng-model="algData.general.start" min="2" max="70" />
+		        		</md-input-container>
+		        		<md-input-container class="md-block" flex="50">
+		        			<label>End</label>
+		        			<input required type="number" step="1" name="numHigh" ng-model="algData.general.end" min="2" max="70" />
+		        		</md-input-container>
+	        		</div>
 	        		<md-button class="md-raised" flex="25">
 	        			<label>GENERATE</label>
 	        		</md-button>
@@ -174,31 +119,4 @@
 							</md-slider-container>
 	        			</div>
         			</div>
-        		</md-content> <!-- End of Accordion Tabs -->
-			</div> <!-- End of Single Run GUI --> 
-
-			<div class="algCtrl md-raised" layout="column" layout-align="center stretch" layout-padding ng-if="(demo.username != '') && (uiInfo.selectedState != '') && (demo.mode == 'batch')" ng-include src="'./batchUI.tmpl.html'">
-
-			</div>
-		</div>
-
-		<!-- JQuery -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  
-  		<!-- Angular Material requires Angular.js Libraries -->
-  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular.min.js"></script>
-  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-animate.min.js"></script>
-  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-aria.min.js"></script>
-  		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.6/angular-messages.min.js"></script>
-
-  		<!-- Angular Material Library -->
-  		<script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.12/angular-material.min.js"></script>
-
-  		<!-- Leaflet AJAX -->
-  		<script src="leaflet.ajax.min.js"></script>
-  
-  		<!-- Your application bootstrap  -->
-  		<script type="text/javascript" src="gui_test1-leaflet.js"></script>
-  		<script type="text/javascript" src="gui_test1-angmat.js"></script>
-	</body>
-</html>
+        		</md-content>

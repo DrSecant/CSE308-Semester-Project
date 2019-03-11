@@ -13,8 +13,8 @@ function MeasureNumInput() {}
 (function() {
   'use strict';
 
-  angular.module('MapApp', ['ngMaterial', 'ngAnimate'])
-    .controller('AppCtrl', function($scope, $mdDialog) {
+  angular.module('MapApp', ['ngMaterial', 'ngMessages', 'ngAnimate'])
+    .controller('AppCtrl', function($scope, $mdDialog, $mdToast) {
       var app = this;
 
       /* Login Info */
@@ -23,8 +23,15 @@ function MeasureNumInput() {}
       app.mode = "single";
 
       /* Call leaflet function (potentially create a Map obj instead) */
-      app.usMap = new Map();
+      $scope.uiInfo = {
+        selectedState: ""
+      };
+      app.usMap = new Map($scope.uiInfo);
       app.usMap.mapSetup();
+      $scope.$watch('uiInfo', function (newValue, oldValue, scope) {
+        var select = document.getElementsByClassName("stateSelect")[0];
+        select.focus();
+      });
 
       app.isOpen = false;
       app.hover = false;
@@ -52,10 +59,12 @@ function MeasureNumInput() {}
           if (answer.action == "login") {
             app.username = answer.username;
             console.log(answer.username + " has logged in.");
+            $mdToast.showSimple("Welcome back " + app.username + "!");
           }
           else if (answer.action == "signup") {
             app.username = answer.username;
             console.log(answer.username + " is now registered.");
+            $mdToast.showSimple("Welcome, " + app.username + "!");
           }
           else {
             console.log("There is a disturbance in the login mechanism...");
@@ -69,19 +78,24 @@ function MeasureNumInput() {}
       app.items = [
         { name: "Login", class:"", icon: "img/icons/baseline-person_outline-24px.svg", direction: "bottom", show: true, click: $scope.showLoginDialog },
         { name: "Log out", class:"", icon: "img/icons/baseline-exit_to_app-24px.svg", direction: "bottom", show: false, click: "" },
-        { name: "Batch Run", class:"", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: true, click: "" },
-        { name: "Single Run", class:" currMode", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: true, click: "" }
+        { name: "Batch Run", class:"", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: false, click: "" },
+        { name: "Single Run", class:" currMode", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: false, click: "" }
       ];
       $scope.clickEvent = function($event, item) {
         if (item.name == "Login") {
           item.click($event);
           item.show = !item.show;
           app.items[1].show = !item.show;
+          app.items[2].show = !item.show;
+          app.items[3].show = !item.show;
         }
         else if (item.name == "Log out") {
           item.show = !item.show;
           app.items[0].show = !item.show;
           app.username = "";
+          app.items[2].show = !item.show;
+          app.items[3].show = !item.show;
+          $mdToast.showSimple("Log out successful.");
         }
         else if (item.name == "Single Run") {
           app.mode = "single";
@@ -104,7 +118,9 @@ function MeasureNumInput() {}
       /* Algorithm Control Menu */
       $scope.algData = {
         general: {
-          numDistricts:null
+          numDistricts:null,
+          start:null,
+          end:null
         },
         compact: {
           "Polsby-popper": new MeasureSlider(1, "polpop-slider", 0, 1, 0.01, "tooltip"),

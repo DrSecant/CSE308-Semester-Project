@@ -1,11 +1,11 @@
-function Map() {
+function Map(info) {
 	// Create variables to be used by listeners
 	this.map;
 	this.geojsonLayer;
 	this.infoCtrl;
 	var maplet = this;
 	this.leaf_states = [];
-	this.selectedState = "";
+	this.uiInfo = info;
 
 	this.mapSetup = function() {
 		geoSetup();
@@ -54,6 +54,8 @@ function Map() {
 
 	// Zooms map to fit state
 	function zoomToFeature(e) {
+		var layer = e.target;
+	    maplet.uiInfo.selectedState = layer.feature.properties.NAME;
 		var bounds = e.target.getBounds();
 		var SHIFT = 2.5;
 		bounds = bounds.toBBoxString(); // 'southwest_lng,southwest_lat,northeast_lng,northeast_lat'
@@ -63,8 +65,6 @@ function Map() {
 		}
 		bounds = [[bounds[1],bounds[0]+SHIFT],[bounds[3],bounds[2]+SHIFT]];
 	    maplet.map.fitBounds(bounds);
-	    var layer = e.target;
-	    maplet.selectedState = layer.feature.properties.NAME;
 	}
 
 	// Maps listener functions to state layer
