@@ -16,6 +16,7 @@ function MeasureNumInput() {}
   angular.module('MapApp', ['ngMaterial', 'ngMessages', 'ngAnimate'])
     .controller('AppCtrl', function($scope, $mdDialog, $mdToast) {
       var app = this;
+      app.test = "(demo.username != '') && (uiInfo.selectedState != '') && (demo.mode == 'batch')";
 
       /* Login Info */
       app.username = "";
