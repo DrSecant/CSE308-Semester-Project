@@ -134,4 +134,14 @@ class AccordionTab extends GuiObj {
 		this.flexOrder = flexOrder;
 		this.state = state;
 	}
+
+	packData() {
+		var data = this.content.packData()[this.content.id];
+		if (Object.keys(data).length > 0) {
+			return { this.id : data };
+		}
+		else {
+			return null;
+		}
+	}
 }
