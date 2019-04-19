@@ -9,3 +9,15 @@ angular.module('districtApp').component('guiGroup', {
   	group: '='
   }
 });
+
+function MenuController($scope, $element, $attrs) {
+	var ctrl = this;
+}
+
+angular.module('districtApp').component('menu', {
+  templateUrl: 'templates/menu.tmpl.html',
+  controller: MenuController,
+  bindings: {
+  	menu: '='
+  }
+});

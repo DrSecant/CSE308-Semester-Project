@@ -1,3 +1,4 @@
 <div class="$ctrl.group.formatClasses()" ng-if="$eval($ctrl.group.ifClause)" layout="$ctrl.group.layout" layout-align="$ctrl.group.layoutAlign" ng-repeat="(sectionID, section) in $ctrl.group.sections">
 	<gui-group ng-if="$ctrl.group.type == 'guiGroup'" group="$ctrl.group.sections[sectionID]"></gui-group>
+	<menu ng-if="$ctrl.group.type == 'menu'" menu="$ctrl.group.sections[sectionID]"></menu>
 </div>
