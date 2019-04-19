@@ -80,7 +80,7 @@ function MeasureNumInput() {}
         { name: "Login", class:"", icon: "img/icons/baseline-person_outline-24px.svg", direction: "bottom", show: true, click: $scope.showLoginDialog },
         { name: "Log out", class:"", icon: "img/icons/baseline-exit_to_app-24px.svg", direction: "bottom", show: false, click: "" },
         { name: "Batch Run", class:"", icon: "img/icons/baseline-add_photo_alternate-24px.svg", direction: "bottom", show: false, click: "" },
-        { name: "Single Run", class:" currMode", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: false, click: "" }
+        { name: "Single Run", class:" currMode", icon: "img/icons/baseline-photo-24px.svg", direction: "bottom", show: true, click: "" }
       ];
       $scope.clickEvent = function($event, item) {
         if (item.name == "Login") {
@@ -88,14 +88,12 @@ function MeasureNumInput() {}
           item.show = !item.show;
           app.items[1].show = !item.show;
           app.items[2].show = !item.show;
-          app.items[3].show = !item.show;
         }
         else if (item.name == "Log out") {
           item.show = !item.show;
           app.items[0].show = !item.show;
           app.username = "";
           app.items[2].show = !item.show;
-          app.items[3].show = !item.show;
           $mdToast.showSimple("Log out successful.");
         }
         else if (item.name == "Single Run") {
