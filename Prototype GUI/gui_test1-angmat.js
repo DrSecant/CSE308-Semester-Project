@@ -115,6 +115,7 @@ function MeasureNumInput() {}
       };
       app.states=app.usMap.leaf_states;
       /* Algorithm Control Menu */
+      $scope.testing = "algData.general.start";
       $scope.algData = {
         general: {
           numDistricts:null,

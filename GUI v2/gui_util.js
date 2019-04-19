@@ -1,11 +1,14 @@
 class GuiObj {
-	constructor(classes, src, include, ifClause, layout, layoutAlign) {
+	constructor(classes, ifClause, layout, layoutAlign) {
 		this.classes = classes;
-		this.src = src; 
-		this.include = include;
 		this.ifClause = ifClause;
 		this.layout = layout;
 		this.layoutAlign = layoutAlign;
+		this.type="guiObj";
+	}
+
+	formatClasses() {
+		return this.classes.join(' ');
 	}
 
 	packData() {
@@ -15,31 +18,30 @@ class GuiObj {
 
 class IconButton extends GuiObj {
 	constructor(properties, id, label, direction, icon, clickEvent) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.id = id; 
 		this.label = label;
 		this.direction = direction;
 		this.icon = icon;
 		this.clickEvent = clickEvent;
+		this.type="iconBtn";
 	}
 }
 
 class Menu extends GuiObj {
 	constructor(properties, open, triggerButton, actions, direction) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.open = open;
 		this.triggerButton = triggerButton;
 		this.actions = actions;
 		this.direction = direction;
+		this.type="menu";
 	}
 }
 
 class SliderMeasure extends GuiObj {
 	constructor(properties, id, label, tooltip, min, max, step, value) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.id = id;
 		this.label = label;
 		this.tooltip = tooltip;
@@ -47,6 +49,7 @@ class SliderMeasure extends GuiObj {
 		this.max = max;
 		this.step = step;
 		this.value = value;
+		this.type="sliderMsr";
 	}
 
 	packData() {
@@ -62,6 +65,7 @@ class RangeMeasure extends SliderMeasure {
 		this.lowSlider = new SliderMeasure(childProperties, this.lowID, "low", "", this.min, this.max, this.step, this.value);
 		this.highID = this.id + "High";
 		this.highSlider = new SliderMeasure(childProperties, this.highID, "high", "", this.min, this.max, this.step, this.value);
+		this.type="rangeMsr";
 	}
 
 	packData() {
@@ -73,10 +77,10 @@ class RangeMeasure extends SliderMeasure {
 
 class GuiGroup extends GuiObj {
 	constructor(properties, id, sections) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.id = id;
 		this.sections = sections;
+		this.type="guiGroup";
 	}
 
 	packData() {
@@ -101,13 +105,13 @@ class GuiGroup extends GuiObj {
 
 class SelectDisplay extends GuiObj {
 	constructor(properties, id, label, options, selected, multiSelect) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.id = id;
 		this.label = label;
 		this.options = options;
 		this.selected = selected;
 		this.multiSelect = multiSelect;
+		this.type="select";
 	}
 
 	packData() {
@@ -126,13 +130,13 @@ class SelectDisplay extends GuiObj {
 
 class AccordionTab extends GuiObj {
 	constructor(properties, id, title, content, flexOrder, state) {
-		super(properties.classes, properties.src, properties.include, 
-			  properties.ifClause, properties.layout, properties.layoutAlign);
+		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
 		this.id = id;
 		this.title = title;
 		this.content = content;
 		this.flexOrder = flexOrder;
 		this.state = state;
+		this.type="accordTab";
 	}
 
 	packData() {
