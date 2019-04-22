@@ -1,0 +1,50 @@
+{
+	"singleRun" : {
+		"class": ["algCtrl", "md-raised"],
+		"ifClause": "(uiInfo.selectedState != '') && (demo.mode == 'single')",
+		"layout": "column",
+		"layoutAlign": "center stretch"
+	},
+	"menuTrigger": {
+		"class": ["md-fab"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"iconBtn": {
+		"class": ["md-fab", "md-raised", "md-mini"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"textBtn": {
+		"class": ["md-raised"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"numInput": {
+		"class": ["md-block"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"slideMeasure": {
+		"class": [],
+		"ifClause": "true",
+		"layout": "row",
+		"layoutAlign": "center center"
+	},
+	"rangeMeasure": {
+		"class": [],
+		"ifClause": "true",
+		"layout": "row",
+		"layoutAlign": "center center"
+	},
+	"menu": {
+		"class": ["md-fab-top-right", "md-scale"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	}
+}

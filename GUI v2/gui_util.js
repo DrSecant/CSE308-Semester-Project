@@ -184,3 +184,5 @@ class AccordionTab extends GuiObj {
 		}
 	}
 }
+
+var componentProp = {};

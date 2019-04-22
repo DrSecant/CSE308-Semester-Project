@@ -5,7 +5,7 @@
 
 	<md-fab-actions>
 		<div ng-repeat="action in $ctrl.menu.actions">
-          	<icon-button button="action"></icon-button>
+          	<icon-button ng-if="$eval($ctrl.menu.open)" button="action"></icon-button>
         </div>
 	</md-fab-actions>
 </md-fab-speed-dial>
