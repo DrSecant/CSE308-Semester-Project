@@ -16,9 +16,9 @@
 
    		<link rel="stylesheet" href="gui_test2.css">
 	</head>
-	<body class="mapTest" ng-app="MapApp" ng-cloak>
+	<body class="mapTest" ng-app="DistrictApp" ng-cloak>
 		<div ng-controller="AppCtrl as maplet" ng-cloak>
-
+      <single-run></single-run>
 		</div>
 
 		<!-- JQuery -->
@@ -36,8 +36,11 @@
   		<!-- Leaflet AJAX -->
   		<script src="leaflet.ajax.min.js"></script>
   
-  		<!-- Your application bootstrap  
-  		<script type="text/javascript" src="gui_test1-leaflet.js"></script>
-  		<script type="text/javascript" src="gui_test1-angmat.js"></script>	-->
+  		<!-- Your application bootstrap -->
+      <script type="text/javascript" src="gui_obj.js"></script>
+      <script type="text/javascript" src="main.js"></script>
+      <script type="text/javascript" src="gui_ctrl.js"></script>
+  		<script type="text/javascript" src="gui_util.js"></script>
+  		<script type="text/javascript" src="single_run.js"></script>
 	</body>
 </html>
