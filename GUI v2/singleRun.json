@@ -1,0 +1,209 @@
+{
+	"SingleRun":{
+		"type": "guiGroup",
+		"id": "singleRun",
+		"sections": {
+			"numDistrictInput": {
+				"type": "numInput",
+				"properties": "",
+				"id": "7",
+				"label": "7",
+				"tooltip": "",
+				"tooltipDir": "",
+				"min": 1,
+				"max": 435,
+				"step": "any",
+				"value": "",
+				"required": true
+			},
+			"measureTabs": {
+				"type": "guiGroup",
+				"id": "tabs",
+				"sections": {
+					"compactnessTab": {
+						"properties": "",
+						"id": "7",
+						"title": "Compactness",
+						"content": {
+							"type": "guiGroup",
+							"id": "compactContent",
+							"sections": {
+								"polsPopSlider": {	
+									"type": "slideMeasure",
+									"properties": "",
+									"id": "1",
+									"label": "Polsby-popper",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5
+								},
+								"schwartzSlider": {
+									"properties": "",
+									"id": "2",
+									"label": "Schwartzberg",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								},
+								"convexHullSlider": {
+									"properties": "",
+									"id": "3",
+									"label": "Convex Hull",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								},
+								"reockSlider": {
+									"properties": "",
+									"id": "4",
+									"label": "Reock",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								}
+							}
+						},
+						"flexOrder": 1,
+						"open": true
+					},
+					"contigTab": {
+						"properties": "",
+						"id": "5",
+						"title": "Contiguity",
+						"content": {
+							"type": "guiGroup",
+							"id": "contigContent",
+							"sections": {
+								"contigSlider": {	
+									"properties": "",
+									"id": "1",
+									"label": "Contiguity",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								}
+							}
+						},
+						"flexOrder": 3,
+						"open": false
+					},
+					"popEqTab": {
+						"properties": "",
+						"id": "6",
+						"title": "Population Equality",
+						"content": {
+							"type": "guiGroup",
+							"id": "popEqContent",
+							"sections": {
+								"popEqSlider": {	
+									"properties": "",
+									"id": "1",
+									"label": "Population Equality",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								}
+							}
+						},
+						"flexOrder": 5,
+						"open": false
+					},
+					"partFairTab": {
+						"properties": "",
+						"id": "6",
+						"title": "Partisan Fairness",
+						"content": {
+							"type": "guiGroup",
+							"id": "partFairContent",
+							"sections": {
+								"partFairSlider": {	
+									"properties": "",
+									"id": "1",
+									"label": "Partisan Fairness",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 0,
+									"max": 1,
+									"step": 0.01,
+									"value": 0.5,
+									"type": "slideMeasure"
+								}
+							}
+						},
+						"flexOrder": 7,
+						"open": false
+					},
+					"majMinTab": {
+						"properties": "",
+						"id": "6",
+						"title": "Majority-Minority Districts",
+						"content": {
+							"type": "guiGroup",
+							"id": "majMinContent",
+							"sections": {
+								"numMajMin": {	
+									"properties": "",
+									"id": "7",
+									"label": "7",
+									"tooltip": "",
+									"tooltipDir": "",
+									"min": 1,
+									"max": 100,
+									"step": "1",
+									"value": "",
+									"required": false,
+									"type": "numInput"
+								},
+								"minoritySelect": {
+									"properties": "",
+									"id": "7",
+									"label": "Minority Select",
+									"options": [
+										"African-American",
+										"Asian",
+										"Latin-American",
+										"White"
+									],
+									"selected": [],
+									"multiSelect": true,
+									"onChange": "",
+									"type": "select"
+								},
+								"minSettingsGroup": {
+									"type": "guiGroup",
+									"id": "tabs",
+									"sections": []
+								}
+							}
+						},
+						"flexOrder": 9,
+						"open": false
+					}
+				}
+			}
+		}
+	}
+}
