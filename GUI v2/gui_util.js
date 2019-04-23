@@ -1,6 +1,16 @@
 var componentProp = {};
 var funcMap = {};
 
+function loadProperties(filePath, $http) {
+	$http.get(filePath).then(function(properties) {
+        componentProp = properties;
+    },
+    function(error) {
+    	componentProp = {};
+    	console.log("error loading general properties");
+    }); 
+}
+
 function parseGui(guiStructure) {
 	switch(guiStructure["type"]) {
 		case "guiObj":

@@ -1,5 +1,4 @@
 {
-	"SingleRun":{
 		"type": "guiGroup",
 		"id": "singleRun",
 		"sections": {
@@ -15,6 +14,16 @@
 				"step": "any",
 				"value": "",
 				"required": true
+			},
+			"runButton": {
+				"type": "textBtn",
+				"properties": "", 
+				"id": "", 
+				"label": "singleRunBtn", 
+				"text": "Run", 
+				"clickEvent": "singleRun", 
+				"tooltip": "", 
+				"tooltipDir": ""
 			},
 			"measureTabs": {
 				"type": "guiGroup",

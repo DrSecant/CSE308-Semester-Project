@@ -56,6 +56,12 @@ class NumberInput extends GuiObj {
 		this.required = required;
 		this.type="numInput";
 	}
+
+	packData() {
+		var result = {};
+		result[this.id] = this.value;
+		return result;
+	}
 }
 
 class Menu extends GuiObj {
@@ -72,6 +78,7 @@ class Menu extends GuiObj {
 class SliderMeasure extends GuiObj {
 	constructor(properties, id, label, tooltip, tooltipDir, min, max, step, value) {
 		super(properties.classes, properties.ifClause, properties.layout, properties.layoutAlign);
+		var test = this;
 		this.id = id;
 		this.label = label;
 		this.tooltip = tooltip;
@@ -84,7 +91,9 @@ class SliderMeasure extends GuiObj {
 	}
 
 	packData() {
-		return { this.id : this.value };
+		var result = {};
+		result[this.id] = this.value;
+		return result;
 	}
 }
 
@@ -102,7 +111,9 @@ class RangeMeasure extends SliderMeasure {
 	packData() {
 		var low = this.lowSlider.packData()[this.lowID];
 		var high = this.highSlider.packData()[this.highID];
-		return { this.id : { "low" : low, "high" : high } };
+		var result = {};
+		result[this.id] = {"low": low, "high": high};
+		return result;
 	}
 }
 
@@ -130,7 +141,9 @@ class GuiGroup extends GuiObj {
 			}
 		}
 
-		return { this.id : packageData };
+		var result = {};
+		result[this.id] = packageData;
+		return result;
 	}
 }
 
@@ -156,7 +169,9 @@ class SelectDisplay extends GuiObj {
 			selectedVals = selectedVals.concat(this.selected);
 		}
 
-		return { this.id : selectedVals };
+		var result = {};
+		result[this.id] = selectedVals;
+		return result;
 	}
 }
 
@@ -175,7 +190,9 @@ class AccordionTab extends GuiObj {
 	packData() {
 		var data = this.content.packData()[this.content.id];
 		if (Object.keys(data).length > 0) {
-			return { this.id : data };
+			var result = {};
+			result[this.id] = data;
+			return result;
 		}
 		else {
 			return null;
