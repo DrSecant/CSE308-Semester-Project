@@ -1,7 +1,7 @@
 'use strict';
 angular.module('prop')
 	.factory('GenProp', function($resource) {
-		var url = "/gui_properties.json";
+		var url = "/properties/gui_properties.json";
 		return $resource(url, {}, {
 			query: {
 				method: "GET",
@@ -18,7 +18,7 @@ angular.module('prop')
 		})
 	})
 	.factory('SingleRunProp', function($resource) {
-		var url = "/singleRun.json";
+		var url = "/properties/singleRun.json";
 		return $resource(url, {}, {
 			query: {
 				method: "GET",
