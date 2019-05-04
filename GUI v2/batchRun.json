@@ -49,7 +49,8 @@
             "id": "tabs",
             "sections": {
               "compactnessTab": {
-                "properties": "",
+                "type": "accordTab",
+                "properties": "accordTab",
                 "id": "7",
                 "title": "Compactness",
                 "content": {
@@ -110,7 +111,8 @@
                 "open": true
               },
               "contigTab": {
-                "properties": "",
+                "type": "accordTab",
+                "properties": "accordTab",
                 "id": "5",
                 "title": "Contiguity",
                 "content": {
@@ -135,7 +137,8 @@
                 "open": false
               },
               "popEqTab": {
-                "properties": "",
+                "type": "accordTab",
+                "properties": "accordTab",
                 "id": "6",
                 "title": "Population Equality",
                 "content": {
@@ -160,7 +163,8 @@
                 "open": false
               },
               "partFairTab": {
-                "properties": "",
+                "type": "accordTab",
+                "properties": "accordTab",
                 "id": "6",
                 "title": "Partisan Fairness",
                 "content": {
@@ -185,7 +189,8 @@
                 "open": false
               },
               "majMinTab": {
-                "properties": "",
+                "type": "accordTab",
+                "properties": "accordTab",
                 "id": "6",
                 "title": "Majority-Minority Districts",
                 "content": {
