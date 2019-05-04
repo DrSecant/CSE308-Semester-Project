@@ -1,50 +1,88 @@
 {
 	"singleRun" : {
-		"class": ["algCtrl", "md-raised"],
-		"ifClause": "(uiInfo.selectedState != '') && (demo.mode == 'single')",
+		"classes": ["algCtrl", "md-raised"],
+		"ifClause": "true",
 		"layout": "column",
 		"layoutAlign": "center stretch"
 	},
 	"menuTrigger": {
-		"class": ["md-fab"],
+		"classes": ["md-fab"],
 		"ifClause": "true",
 		"layout": "",
 		"layoutAlign": ""
 	},
 	"iconBtn": {
-		"class": ["md-fab", "md-raised", "md-mini"],
+		"classes": ["md-fab", "md-raised", "md-mini"],
 		"ifClause": "true",
 		"layout": "",
 		"layoutAlign": ""
 	},
 	"textBtn": {
-		"class": ["md-raised"],
+		"classes": ["md-raised"],
 		"ifClause": "true",
 		"layout": "",
 		"layoutAlign": ""
 	},
 	"numInput": {
-		"class": ["md-block"],
+		"classes": ["md-block"],
 		"ifClause": "true",
 		"layout": "",
 		"layoutAlign": ""
 	},
 	"slideMeasure": {
-		"class": [],
+		"classes": [],
 		"ifClause": "true",
 		"layout": "row",
 		"layoutAlign": "center center"
 	},
 	"rangeMeasure": {
-		"class": [],
+		"classes": [],
 		"ifClause": "true",
 		"layout": "row",
 		"layoutAlign": "center center"
 	},
 	"menu": {
-		"class": ["md-fab-top-right", "md-scale"],
+		"classes": ["md-fab-top-right", "md-scale"],
 		"ifClause": "true",
 		"layout": "",
 		"layoutAlign": ""
+	},
+	"guiGroup": {
+		"classes": [],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"select": {
+		"classes": [],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"accordTab": {
+		"classes": ["accordContent", "animate-if"],
+		"ifClause": "true",
+		"layout": "",
+		"layoutAlign": ""
+	},
+	"accordBtnOpen": {
+		"type": "iconBtn",
+		"properties": "iconBtn", 
+		"id": "", 
+		"label": "maximize", 
+		"icon": "img/icons/baseline-remove-24px.svg", 
+		"clickEvent": "changeTabState", 
+		"tooltip": "", 
+		"tooltipDir": ""
+	},
+	"accordBtnClosed": {
+		"type": "iconBtn",
+		"properties": "iconBtn", 
+		"id": "", 
+		"label": "minimize", 
+		"icon": "img/icons/baseline-add-24px.svg", 
+		"clickEvent": "changeTabState", 
+		"tooltip": "", 
+		"tooltipDir": ""
 	}
 }

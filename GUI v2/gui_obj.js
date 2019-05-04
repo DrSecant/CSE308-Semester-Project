@@ -1,14 +1,14 @@
 class GuiObj {
 	constructor(classes, ifClause, layout, layoutAlign) {
-		this.classes = classes;
+		this.classes = {};
+		for (let i = 0; i < classes.length; i++){
+			this.classes[classes[i]] = true;
+		}
+
 		this.ifClause = ifClause;
 		this.layout = layout;
 		this.layoutAlign = layoutAlign;
 		this.type="guiObj";
-	}
-
-	formatClasses() {
-		return this.classes.join(' ');
 	}
 
 	packData() {

@@ -1,8 +1,14 @@
-(function() {
-  'use strict';
+'use strict';
 
-  angular.module('DistrictApp', ['ngMaterial', 'ngMessages', 'ngAnimate'])
-    .controller('AppCtrl', function($scope, $mdDialog, $mdToast, $http) {
-    	loadProperties("gui_properties.json", $http);
-  	});
-})();
+angular.module('DistrictApp', ['prop', 'ngMaterial', 'ngMessages', 'ngAnimate'])
+    .controller('AppCtrl', function(GenProp, $scope) {
+    	var ctrl = this;
+    	$scope.componentProp = GenProp.query();
+    	ctrl.guiGenFunc = parseGui;
+
+    	$scope.uiInfo = {
+        	selectedState: ""
+	    };
+	    ctrl.usMap = new Map($scope.uiInfo);
+	    ctrl.usMap.mapSetup();
+});

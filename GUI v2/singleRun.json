@@ -1,12 +1,13 @@
 {
 		"type": "guiGroup",
 		"id": "singleRun",
+		"properties": "singleRun",
 		"sections": {
 			"numDistrictInput": {
 				"type": "numInput",
-				"properties": "",
-				"id": "7",
-				"label": "7",
+				"properties": "numInput",
+				"id": "numDistrict",
+				"label": "Number of Districts",
 				"tooltip": "",
 				"tooltipDir": "",
 				"min": 1,
@@ -17,8 +18,8 @@
 			},
 			"runButton": {
 				"type": "textBtn",
-				"properties": "", 
-				"id": "", 
+				"properties": "textBtn", 
+				"id": "singleRunBtn", 
 				"label": "singleRunBtn", 
 				"text": "Run", 
 				"clickEvent": "singleRun", 
@@ -27,19 +28,22 @@
 			},
 			"measureTabs": {
 				"type": "guiGroup",
+				"properties": "guiGroup",
 				"id": "tabs",
 				"sections": {
 					"compactnessTab": {
-						"properties": "",
-						"id": "7",
+						"type": "accordTab",
+						"properties": "accordTab",
+						"id": "compactTab",
 						"title": "Compactness",
 						"content": {
 							"type": "guiGroup",
 							"id": "compactContent",
+							"properties": "guiGroup",
 							"sections": {
 								"polsPopSlider": {	
 									"type": "slideMeasure",
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "1",
 									"label": "Polsby-popper",
 									"tooltip": "",
@@ -50,7 +54,7 @@
 									"value": 0.5
 								},
 								"schwartzSlider": {
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "2",
 									"label": "Schwartzberg",
 									"tooltip": "",
@@ -62,7 +66,7 @@
 									"type": "slideMeasure"
 								},
 								"convexHullSlider": {
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "3",
 									"label": "Convex Hull",
 									"tooltip": "",
@@ -74,7 +78,7 @@
 									"type": "slideMeasure"
 								},
 								"reockSlider": {
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "4",
 									"label": "Reock",
 									"tooltip": "",
@@ -88,18 +92,21 @@
 							}
 						},
 						"flexOrder": 1,
-						"open": true
+						"open": true,
+						"expandButton": "accordBtnOpen"
 					},
 					"contigTab": {
-						"properties": "",
-						"id": "5",
+						"type": "accordTab",
+						"properties": "accordTab",
+						"id": "contigTab",
 						"title": "Contiguity",
 						"content": {
 							"type": "guiGroup",
+							"properties": "guiGroup",
 							"id": "contigContent",
 							"sections": {
 								"contigSlider": {	
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "1",
 									"label": "Contiguity",
 									"tooltip": "",
@@ -113,18 +120,21 @@
 							}
 						},
 						"flexOrder": 3,
-						"open": false
+						"open": false,
+						"expandButton": "accordBtnClosed"
 					},
 					"popEqTab": {
-						"properties": "",
-						"id": "6",
+						"type": "accordTab",
+						"properties": "accordTab",
+						"id": "popEqTab",
 						"title": "Population Equality",
 						"content": {
 							"type": "guiGroup",
+							"properties": "guiGroup",
 							"id": "popEqContent",
 							"sections": {
 								"popEqSlider": {	
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "1",
 									"label": "Population Equality",
 									"tooltip": "",
@@ -138,18 +148,21 @@
 							}
 						},
 						"flexOrder": 5,
-						"open": false
+						"open": false,
+						"expandButton": "accordBtnClosed"
 					},
 					"partFairTab": {
-						"properties": "",
+						"type": "accordTab",
+						"properties": "accordTab",
 						"id": "6",
 						"title": "Partisan Fairness",
 						"content": {
 							"type": "guiGroup",
+							"properties": "guiGroup",
 							"id": "partFairContent",
 							"sections": {
 								"partFairSlider": {	
-									"properties": "",
+									"properties": "slideMeasure",
 									"id": "1",
 									"label": "Partisan Fairness",
 									"tooltip": "",
@@ -163,18 +176,21 @@
 							}
 						},
 						"flexOrder": 7,
-						"open": false
+						"open": false,
+						"expandButton": "accordBtnClosed"
 					},
 					"majMinTab": {
-						"properties": "",
+						"type": "accordTab",
+						"properties": "accordTab",
 						"id": "6",
 						"title": "Majority-Minority Districts",
 						"content": {
 							"type": "guiGroup",
+							"properties": "guiGroup",
 							"id": "majMinContent",
 							"sections": {
 								"numMajMin": {	
-									"properties": "",
+									"properties": "numInput",
 									"id": "7",
 									"label": "7",
 									"tooltip": "",
@@ -187,7 +203,7 @@
 									"type": "numInput"
 								},
 								"minoritySelect": {
-									"properties": "",
+									"properties": "select",
 									"id": "7",
 									"label": "Minority Select",
 									"options": [
@@ -203,16 +219,18 @@
 								},
 								"minSettingsGroup": {
 									"type": "guiGroup",
+									"properties": "guiGroup",
 									"id": "tabs",
 									"sections": []
 								}
 							}
 						},
 						"flexOrder": 9,
-						"open": false
+						"open": false,
+						"expandButton": "accordBtnClosed"
 					}
 				}
 			}
 		}
-	}
+
 }

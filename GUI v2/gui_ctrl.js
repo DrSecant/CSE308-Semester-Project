@@ -14,7 +14,7 @@ function TextBtnController($scope, $element, $attrs) {
 	var ctrl = this;
 }
 
-angular.module('DistrictApp').component('textBtn', {
+angular.module('DistrictApp').component('textButton', {
   templateUrl: 'templates/textBtn.tmpl.html',
   controller: TextBtnController,
   bindings: {
@@ -26,7 +26,7 @@ function IconBtnController($scope, $element, $attrs) {
 	var ctrl = this;
 }
 
-angular.module('DistrictApp').component('iconBtn', {
+angular.module('DistrictApp').component('iconButton', {
   templateUrl: 'templates/iconBtn.tmpl.html',
   controller: IconBtnController,
   bindings: {
@@ -50,7 +50,7 @@ function NumberInputController($scope, $element, $attrs) {
 	var ctrl = this;
 }
 
-angular.module('DistrictApp').component('numInput', {
+angular.module('DistrictApp').component('numberInput', {
   templateUrl: 'templates/numInput.tmpl.html',
   controller: NumberInputController,
   bindings: {
