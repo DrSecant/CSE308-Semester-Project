@@ -3,33 +3,40 @@
 		"id": "singleRun",
 		"properties": "singleRun",
 		"sections": {
-			"numDistrictInput": {
-				"type": "numInput",
-				"properties": "numInput",
-				"id": "numDistrict",
-				"label": "Number of Districts",
-				"tooltip": "",
-				"tooltipDir": "",
-				"min": 1,
-				"max": 435,
-				"step": "any",
-				"value": "",
-				"required": true
-			},
-			"runButton": {
-				"type": "textBtn",
-				"properties": "textBtn", 
-				"id": "singleRunBtn", 
-				"label": "singleRunBtn", 
-				"text": "Run", 
-				"clickEvent": "singleRun", 
-				"tooltip": "", 
-				"tooltipDir": ""
+			"mainControls": {
+				"type": "guiGroup",
+				"id": "singleMainCtrl",
+				"properties": "mainCtrl",
+				"sections": {
+					"numDistrictInput": {
+						"type": "numInput",
+						"properties": "numDistrict",
+						"id": "numDistrict",
+						"label": "Number of Districts",
+						"tooltip": "",
+						"tooltipDir": "",
+						"min": 1,
+						"max": 435,
+						"step": "any",
+						"value": "",
+						"required": true
+					},
+					"runButton": {
+						"type": "textBtn",
+						"properties": "runBtn", 
+						"id": "singleRunBtn", 
+						"label": "singleRunBtn", 
+						"text": "Run", 
+						"clickEvent": "singleRun", 
+						"tooltip": "", 
+						"tooltipDir": ""
+					}
+				}
 			},
 			"measureTabs": {
 				"type": "guiGroup",
-				"properties": "guiGroup",
-				"id": "tabs",
+				"properties": "accordContainer",
+				"id": "accordContainer",
 				"sections": {
 					"compactnessTab": {
 						"type": "accordTab",

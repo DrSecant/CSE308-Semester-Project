@@ -1,4 +1,4 @@
-<md-input-container ng-class="$ctrl.input.classes" ng-if="$eval($ctrl.input.ifClause)" layout="$ctrl.input.layout" layout-align="$ctrl.input.layoutAlign">
+<md-input-container ng-class="$ctrl.input.classes" ng-if="$eval($ctrl.input.ifClause)" layout="{{$ctrl.input.layout}}" layout-align="{{$ctrl.input.layoutAlign}}">
 	<label>{{$ctrl.input.label}}</label>
 	<md-tooltip ng-if="$ctrl.input.tooltip != ''" md-direction="{{$ctrl.input.tooltipDir}}"  md-autohide="false">
         {{$ctrl.input.label}}

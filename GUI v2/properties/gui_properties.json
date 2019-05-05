@@ -1,73 +1,103 @@
 {
 	"singleRun" : {
-		"classes": ["algCtrl", "md-raised"],
+		"classes": ["algCtrl", "guiCtrl", "md-raised", "layout-padding", "layout-column", "layout-align-center-stretch"],
 		"ifClause": "true",
-		"layout": "column",
-		"layoutAlign": "center stretch"
+		"flex": "",
+		"layout": []
+	},
+	"mainCtrl" : {
+		"classes": ["layout-padding", "layout-row", "layout-align-center-start"],
+		"ifClause": "true",
+		"flex": "flex-15",
+		"layout": []
 	},
 	"menuTrigger": {
 		"classes": ["md-fab"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
 	},
 	"iconBtn": {
 		"classes": ["md-fab", "md-raised", "md-mini"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
+	},
+	"accordBtn": {
+		"classes": ["md-icon-button"],
+		"ifClause": "true",
+		"flex": "",
+		"layout": []
 	},
 	"textBtn": {
 		"classes": ["md-raised"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
+	},
+	"runBtn": {
+		"classes": ["md-raised"],
+		"ifClause": "true",
+		"flex": "flex-30",
+		"layout": []
 	},
 	"numInput": {
 		"classes": ["md-block"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
+	},
+	"numDistrict": {
+		"classes": ["md-block"],
+		"ifClause": "true",
+		"flex": "flex-70",
+		"layout": []
 	},
 	"slideMeasure": {
-		"classes": [],
+		"classes": ["layout-row", "layout-align-center-center"],
 		"ifClause": "true",
-		"layout": "row",
-		"layoutAlign": "center center"
+		"flex": "",
+		"layout": []
 	},
 	"rangeMeasure": {
-		"classes": [],
+		"classes": ["layout-row", "layout-align-center-center"],
 		"ifClause": "true",
-		"layout": "row",
-		"layoutAlign": "center center"
+		"flex": "",
+		"layout": []
 	},
 	"menu": {
 		"classes": ["md-fab-top-right", "md-scale"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
 	},
 	"guiGroup": {
 		"classes": [],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
 	},
 	"select": {
 		"classes": [],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
+	},
+	"accordContainer": {
+		"classes": [],
+		"ifClause": "true",
+		"flex": "flex-85",
+		"layout": []
 	},
 	"accordTab": {
 		"classes": ["accordContent", "animate-if"],
 		"ifClause": "true",
-		"layout": "",
-		"layoutAlign": ""
+		"flex": "",
+		"layout": []
 	},
 	"accordBtnOpen": {
 		"type": "iconBtn",
-		"properties": "iconBtn", 
+		"properties": "accordBtn", 
 		"id": "", 
 		"label": "maximize", 
 		"icon": "img/icons/baseline-remove-24px.svg", 
@@ -77,7 +107,7 @@
 	},
 	"accordBtnClosed": {
 		"type": "iconBtn",
-		"properties": "iconBtn", 
+		"properties": "accordBtn", 
 		"id": "", 
 		"label": "minimize", 
 		"icon": "img/icons/baseline-add-24px.svg", 

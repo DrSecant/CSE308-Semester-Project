@@ -47,7 +47,7 @@
       <!-- US Map -->
       <div leaflet (leafletMapReady)="onMapReady($event)" layout="column" flex="100%" id="map"></div>
 
-      <single-run class="guiCtrl algCtrl" component-prop="componentProp" gen-gui-func="$ctrl.parseGui(objStruct, prop)"></single-run>
+      <single-run component-prop="componentProp" gen-gui-func="$ctrl.parseGui(objStruct, prop)"></single-run>
 		</div>
 	</body>
 </html>

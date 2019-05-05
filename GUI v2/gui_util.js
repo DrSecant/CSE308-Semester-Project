@@ -5,7 +5,7 @@ function parseGui(guiStructure, componentProp) {
 		switch(guiStructure["type"]) {
 			case "guiObj":
 				return new GuiObj(guiStructure["classes"], guiStructure["ifClause"], 
-								  guiStructure["layout"], guiStructure["layoutAlign"]);
+								  guiStructure["flex"], guiStructure["layout"]);
 			break;
 
 			case "textBtn":
