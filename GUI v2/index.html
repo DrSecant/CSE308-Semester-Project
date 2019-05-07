@@ -40,14 +40,17 @@
       <script type="text/javascript" src="gui_util.js"></script>
       <script type="text/javascript" src="main.js"></script>
       <script type="text/javascript" src="gui_ctrl.js"></script>
+      <script type="text/javascript" src="main_menu.js"></script>
       <script type="text/javascript" src="single_run.js"></script>
 	</head>
 	<body class="mapTest" ng-app="DistrictApp" ng-cloak>
-		<div ng-controller="AppCtrl as maplet" ng-cloak>
+		<div ng-controller="AppCtrl as maplet" id="appShell" ng-cloak>
+      <app-menu content="content" component-prop="componentProp"></app-menu>
+
       <!-- US Map -->
       <div leaflet (leafletMapReady)="onMapReady($event)" layout="column" flex="100%" id="map"></div>
 
-      <single-run component-prop="componentProp" gen-gui-func="$ctrl.parseGui(objStruct, prop)"></single-run>
+      <single-run content="content" component-prop="componentProp"></single-run>
 		</div>
 	</body>
 </html>

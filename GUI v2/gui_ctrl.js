@@ -3,6 +3,7 @@ function GuiGroupController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('guiGroup', {
+  scope: false,
   templateUrl: 'templates/guiGroup.tmpl.html',
   controller: GuiGroupController,
   bindings: {
@@ -10,11 +11,20 @@ angular.module('DistrictApp').component('guiGroup', {
   }
 });
 
-function TextBtnController($scope, $element, $attrs) {
+function TextBtnController($scope, $element, $attrs, $rootScope) {
 	var ctrl = this;
+  $scope.callClickFunc = function(funcName, args) {
+    if (Object.keys(args).length == 0) {
+      ctrl.funcMap[funcName]();
+    }
+    else {
+      ctrl.funcMap[funcName](args);
+    }
+  };
 }
 
 angular.module('DistrictApp').component('textButton', {
+  scope: false,
   templateUrl: 'templates/textBtn.tmpl.html',
   controller: TextBtnController,
   bindings: {
@@ -22,11 +32,20 @@ angular.module('DistrictApp').component('textButton', {
   }
 });
 
-function IconBtnController($scope, $element, $attrs) {
+function IconBtnController($scope, $element, $attrs, $rootScope) {
 	var ctrl = this;
+  $scope.callClickFunc = function(funcName, args) {
+    if (Object.keys(args).length == 0) {
+      $rootScope.funcMap[funcName]();
+    }
+    else {
+      $rootScope.funcMap[funcName](args);
+    }
+  };
 }
 
 angular.module('DistrictApp').component('iconButton', {
+  scope: false,
   templateUrl: 'templates/iconBtn.tmpl.html',
   controller: IconBtnController,
   bindings: {
@@ -39,6 +58,7 @@ function MenuController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('menu', {
+  scope: false,
   templateUrl: 'templates/menu.tmpl.html',
   controller: MenuController,
   bindings: {
@@ -51,6 +71,7 @@ function NumberInputController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('numberInput', {
+  scope: false,
   templateUrl: 'templates/numInput.tmpl.html',
   controller: NumberInputController,
   bindings: {
@@ -63,6 +84,7 @@ function SliderMeasureController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('slideMeasure', {
+  scope: false,
   templateUrl: 'templates/slideMeasure.tmpl.html',
   controller: SliderMeasureController,
   bindings: {
@@ -75,6 +97,7 @@ function RangeMeasureController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('rangeMeasure', {
+  scope: false,
   templateUrl: 'templates/rangeMeasure.tmpl.html',
   controller: RangeMeasureController,
   bindings: {
@@ -82,11 +105,21 @@ angular.module('DistrictApp').component('rangeMeasure', {
   }
 });
 
-function SelectController($scope, $element, $attrs) {
+function SelectController($scope, $element, $attrs, $rootScope) {
 	var ctrl = this;
+
+  $scope.callChangeFunc = function(funcName, args) {
+    if (Object.keys(args).length == 0) {
+      $rootScope.funcMap[funcName]();
+    }
+    else {
+      $rootScope.funcMap[funcName](args);
+    }
+  };
 }
 
 angular.module('DistrictApp').component('selectDisplay', {
+  scope: false,
   templateUrl: 'templates/select.tmpl.html',
   controller: SelectController,
   bindings: {
@@ -99,6 +132,7 @@ function AccordionController($scope, $element, $attrs) {
 }
 
 angular.module('DistrictApp').component('accordionTab', {
+  scope: false,
   templateUrl: 'templates/accordionTab.tmpl.html',
   controller: AccordionController,
   bindings: {

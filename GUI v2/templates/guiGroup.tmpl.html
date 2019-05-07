@@ -1,4 +1,4 @@
-<div id="{{$ctrl.group.id}}" ng-class="$ctrl.group.classes">
+<div id="{{$ctrl.group.id}}" ng-class="$ctrl.group.classes" ng-if="$eval($ctrl.group.ifClause)">
 	<gui-group ng-repeat-start="(sectionID, section) in $ctrl.group.sections" ng-if="section.type === 'guiGroup'" group="$ctrl.group.sections[sectionID]" ng-class="section.flex"></gui-group>
 	<menu ng-if="section.type == 'menu'" menu="$ctrl.group.sections[sectionID]" ng-class="section.flex"></menu>
 	<text-button ng-if="section.type === 'textBtn'" button="$ctrl.group.sections[sectionID]" ng-class="section.flex"></text-button>

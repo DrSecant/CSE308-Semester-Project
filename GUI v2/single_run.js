@@ -1,20 +1,22 @@
 'use strict';
 
-function SingleRunController(SingleRunProp, $scope, $element, $attrs, $http) {
+function SingleRunController(SingleRunProp, $scope, $rootScope, $element, $attrs) {
 	var ctrl = this;
+  ctrl.sectionId = "singleRun";
 
   var singleRunStruct = SingleRunProp.query();
-
   singleRunStruct.$promise.then(function() {
-    ctrl.content = parseGui(singleRunStruct, ctrl.componentProp);
     console.log(ctrl.content);
+    ctrl.content[ctrl.sectionId] = parseGui(singleRunStruct, ctrl.componentProp, []);
   });
 }
 
 angular.module('DistrictApp').component('singleRun', {
-  templateUrl: 'templates/singleRun.tmpl.html',
+  scope: false,
+  templateUrl: 'templates/pageSection.tmpl.html',
   controller: SingleRunController,
   bindings: {
+    content: "=",
   	componentProp: '='
   }
 });

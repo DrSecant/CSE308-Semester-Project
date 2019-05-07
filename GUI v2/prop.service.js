@@ -33,4 +33,38 @@ angular.module('prop')
 				cache: true
 			}
 		})
+	})
+	.factory('BatchRunProp', function($resource) {
+		var url = "/properties/batchRun.json";
+		return $resource(url, {}, {
+			query: {
+				method: "GET",
+				params: {},
+				isArray: false,
+				cache: true
+			},
+			get: {
+				method: "GET",
+				params: {},
+				isArray: false,
+				cache: true
+			}
+		})
+	})
+	.factory('AppMenuProp', function($resource) {
+		var url = "/properties/mainMenu.json";
+		return $resource(url, {}, {
+			query: {
+				method: "GET",
+				params: {},
+				isArray: false,
+				cache: true
+			},
+			get: {
+				method: "GET",
+				params: {},
+				isArray: false,
+				cache: true
+			}
+		})
 	});

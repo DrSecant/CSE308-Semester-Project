@@ -1,5 +1,6 @@
 class GuiObj {
-	constructor(classes, ifClause, flex, layout) {
+	constructor(url, classes, ifClause, flex, layout) {
+		this.url = url;
 		this.classes = {};
 		for (let i = 0; i < classes.length; i++){
 			this.classes[classes[i]] = true;
@@ -21,12 +22,13 @@ class GuiObj {
 }
 
 class TextButton extends GuiObj {
-	constructor(properties, id, label, text, clickEvent, tooltip, tooltipDir) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+	constructor(properties, id, label, text, clickEvent, eventArgs, tooltip, tooltipDir) {
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id; 
 		this.label = label;
 		this.text = text;
 		this.clickEvent = clickEvent;
+		this.eventArgs = eventArgs;
 		this.tooltip = tooltip;
 		this.tooltipDir = tooltipDir;
 		this.type="textBtn";
@@ -34,12 +36,13 @@ class TextButton extends GuiObj {
 }
 
 class IconButton extends GuiObj {
-	constructor(properties, id, label, icon, clickEvent, tooltip, tooltipDir) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+	constructor(properties, id, label, icon, clickEvent, eventArgs, tooltip, tooltipDir) {
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id; 
 		this.label = label;
 		this.icon = icon;
 		this.clickEvent = clickEvent;
+		this.eventArgs = eventArgs;
 		this.tooltip = tooltip;
 		this.tooltipDir = tooltipDir;
 		this.type="iconBtn";
@@ -48,7 +51,7 @@ class IconButton extends GuiObj {
 
 class NumberInput extends GuiObj {
 	constructor(properties, id, label, tooltip, tooltipDir, min, max, step, value, required) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id;
 		this.label = label;
 		this.tooltip = tooltip;
@@ -70,7 +73,7 @@ class NumberInput extends GuiObj {
 
 class Menu extends GuiObj {
 	constructor(properties, open, triggerButton, actions, direction) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.open = open;
 		this.triggerButton = triggerButton;
 		this.actions = actions;
@@ -81,8 +84,7 @@ class Menu extends GuiObj {
 
 class SliderMeasure extends GuiObj {
 	constructor(properties, id, label, tooltip, tooltipDir, min, max, step, value) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
-		var test = this;
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id;
 		this.label = label;
 		this.tooltip = tooltip;
@@ -123,7 +125,7 @@ class RangeMeasure extends SliderMeasure {
 
 class GuiGroup extends GuiObj {
 	constructor(properties, id, sections) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id;
 		this.sections = sections;
 		this.type="guiGroup";
@@ -152,14 +154,15 @@ class GuiGroup extends GuiObj {
 }
 
 class SelectDisplay extends GuiObj {
-	constructor(properties, id, label, options, selected, multiSelect, onChange) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+	constructor(properties, id, label, options, selected, multiSelect, onChange, eventArgs) {
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id;
 		this.label = label;
 		this.options = options;
 		this.selected = selected;
 		this.multiSelect = multiSelect;
 		this.onChange = onChange;
+		this.eventArgs = eventArgs;
 		this.type="select";
 	}
 
@@ -181,7 +184,7 @@ class SelectDisplay extends GuiObj {
 
 class AccordionTab extends GuiObj {
 	constructor(properties, id, title, content, flexOrder, open, expandButton) {
-		super(properties.classes, properties.ifClause, properties.flex, properties.layout);
+		super(properties.url, properties.classes, properties.ifClause, properties.flex, properties.layout);
 		this.id = id;
 		this.title = title;
 		this.content = content;

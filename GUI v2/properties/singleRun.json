@@ -1,6 +1,6 @@
 {
 		"type": "guiGroup",
-		"id": "singleRun",
+		"id": "singleRunGroup",
 		"properties": "singleRun",
 		"sections": {
 			"mainControls": {
@@ -26,8 +26,9 @@
 						"properties": "runBtn", 
 						"id": "singleRunBtn", 
 						"label": "singleRunBtn", 
-						"text": "Run", 
-						"clickEvent": "singleRun", 
+						"text": "Generate", 
+						"clickEvent": "startSingleRun",
+						"eventArgs": "{}",
 						"tooltip": "", 
 						"tooltipDir": ""
 					}
@@ -198,8 +199,8 @@
 							"sections": {
 								"numMajMin": {	
 									"properties": "numInput",
-									"id": "7",
-									"label": "7",
+									"id": "singleMinMajNum",
+									"label": "Number of Districts",
 									"tooltip": "",
 									"tooltipDir": "",
 									"min": 1,
@@ -211,7 +212,7 @@
 								},
 								"minoritySelect": {
 									"properties": "select",
-									"id": "7",
+									"id": "singleMinSelect",
 									"label": "Minority Select",
 									"options": [
 										"African-American",
@@ -221,13 +222,14 @@
 									],
 									"selected": [],
 									"multiSelect": true,
-									"onChange": "",
+									"onChange": "updateMajMinSliders",
+									"eventArgs": "{ 'selectUrl':  $ctrl.select.url, 'sectionId': 'singleRun', 'selectedGroups': $ctrl.select.selected, 'sliderGroupId': 'minSettingsGroup', 'rangeProp': 'majMinRange' }",
 									"type": "select"
 								},
 								"minSettingsGroup": {
 									"type": "guiGroup",
 									"properties": "guiGroup",
-									"id": "tabs",
+									"id": "singleMinMajPercent",
 									"sections": []
 								}
 							}
